@@ -90,7 +90,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               const Text(
                 'Al Farabi JSON Parser',
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 18,
                 ),
               ),
