@@ -19,13 +19,18 @@ class ViewPdfScreen extends StatelessWidget {
           children: [
             SfPdfViewer.memory(
               pdfBytes,
-              interactionMode: PdfInteractionMode.pan,
             ),
-            ElevatedButton(
-              onPressed: () {
-                vm.downloadPdf(pdf: pdfBytes);
-              },
-              child: Text('Download'),
+            Align(
+              alignment: Alignment.topRight,
+              child: IconButton(
+                onPressed: () {
+                  vm.downloadPdf(pdf: pdfBytes);
+                },
+                icon: const Icon(
+                  Icons.download,
+                  size: 55,
+                ),
+              ),
             ),
           ],
         ),
