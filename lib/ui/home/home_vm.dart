@@ -1,14 +1,14 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:farabi_clinics_pdf_viewer/dialogues/pdf_list_dialog.dart';
 import 'package:farabi_clinics_pdf_viewer/main.dart';
-import 'package:farabi_clinics_pdf_viewer/ui/view_pdf/view_pdf_screen.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 class HomeVm extends ChangeNotifier {
   String? _jsonParsingError;
-  final List<Uint8List> pdfsFound = [];
+  final List<Uint8List> _pdfsFound = [];
   Map<String, dynamic>? _jsonFile;
   String? _fileName;
 
@@ -29,24 +29,29 @@ class HomeVm extends ChangeNotifier {
   Future<void> parseJson() async {
     jsonParsingError = null;
     try {
-      // pdfsFound.clear();
+      _pdfsFound.clear();
       for (var i in _jsonFile!['entry']) {
         if (i['resource']['supportingInfo'] != null) {
           for (var j in i['resource']['supportingInfo']) {
             if (j['valueAttachment'] != null) {
               String content = j['valueAttachment']['data'];
-              // pdfsFound.add(base64Decode(content));
-              Uint8List pdfFileBytes = base64Decode(content);
-              Navigator.of(navigatorKey.currentState!.context).push(
-                MaterialPageRoute(
-                  builder: (context) => ViewPdfScreen(pdfBytes: pdfFileBytes),
-                ),
-              );
+              _pdfsFound.add(base64Decode(content));
+              // Uint8List pdfFileBytes = base64Decode(content);
+              // Navigator.of(navigatorKey.currentState!.context).push(
+              //   MaterialPageRoute(
+              //     builder: (context) => ViewPdfScreen(pdfBytes: pdfFileBytes),
+              //   ),
+              // );
             }
           }
         }
       }
-      notifyListeners();
+      if (_pdfsFound.isNotEmpty) {
+        showDialog(
+          context: navigatorKey.currentState!.context,
+          builder: (context) => PdfListDialog(pdfList: _pdfsFound),
+        );
+      }
     } catch (e) {
       print('Invalid JSON');
       jsonParsingError =

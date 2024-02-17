@@ -19,6 +19,7 @@ class ViewPdfScreen extends StatelessWidget {
           children: [
             SfPdfViewer.memory(
               pdfBytes,
+              interactionMode: PdfInteractionMode.pan,
             ),
             ElevatedButton(
               onPressed: () {
