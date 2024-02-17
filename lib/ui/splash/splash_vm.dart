@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class SplashVm extends ChangeNotifier {
   Future<void> initTimer() async {
     await Future.delayed(const Duration(seconds: 3));
-    Navigator.of(navigatorKey.currentState!.context).push(
+    Navigator.of(navigatorKey.currentState!.context).pushReplacement(
       MaterialPageRoute(
         builder: (context) => const HomeScreen(),
       ),
