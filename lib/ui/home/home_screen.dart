@@ -95,7 +95,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               Text(
-                'Parse your jaons with ease',
+                'Parse insurance claim JSONs with ease',
                 style: TextStyle(
                   color: Colors.black.withOpacity(0.5),
                 ),
