@@ -6,6 +6,7 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 void main() => runApp(
       MaterialApp(
         navigatorKey: navigatorKey,
+        debugShowCheckedModeBanner: false,
         home: const SplashScreen(),
       ),
     );
