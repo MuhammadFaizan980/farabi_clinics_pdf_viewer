@@ -32,6 +32,18 @@ class ViewPdfScreen extends StatelessWidget {
                 ),
               ),
             ),
+            Align(
+              alignment: Alignment.topLeft,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: const Icon(
+                  Icons.arrow_back,
+                  size: 55,
+                ),
+              ),
+            ),
           ],
         ),
       ),

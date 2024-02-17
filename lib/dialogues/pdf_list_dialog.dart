@@ -19,7 +19,7 @@ class PdfListDialog extends StatelessWidget {
       ),
       content: SizedBox(
         width: getScreenWidth() * 0.5,
-        height: getScreenHeight() * 0.75,
+        height: getScreenWidth() * 0.8,
         child: Stack(
           children: [
             Column(
@@ -54,7 +54,7 @@ class PdfListDialog extends StatelessWidget {
                                 child: Icon(
                                   Icons.picture_as_pdf,
                                   color: Colors.black.withOpacity(0.3),
-                                  size: 55,
+                                  size: getScreenWidth() * 0.05,
                                 ),
                               ),
                             ),
